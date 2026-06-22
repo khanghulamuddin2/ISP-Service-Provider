@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonu Network – High-Speed Fiber Internet, Mumbai</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04080f;--surface:#0b1120;--surface2:#111b2e;--border:#1e2d47;--accent:#00c8ff;--accent2:#0066ff;--accent3:#00ff88;--text:#e8f0fe;--muted:#7a90b0;--whatsapp:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent2);border-radius:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(4,8,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:70px}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo span{color:var(--accent3);-webkit-text-fill-color:var(--accent3)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:linear-gradient(135deg,var(--accent2),var(--accent));border:none;color:#fff;padding:.5rem 1.4rem;border-radius:6px;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer;font-size:.9rem;transition:.2s}
+.nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:var(--accent);display:block}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);padding:1.5rem 5%;flex-direction:column;gap:1.2rem;z-index:999}
+.mobile-menu a{color:var(--text);text-decoration:none;font-weight:500}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(0,102,255,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(0,200,255,.1) 0%,transparent 60%)}
+.grid-lines{position:absolute;inset:0;z-index:0;opacity:.06;background-image:linear-gradient(var(--accent) 1px,transparent 1px),linear-gradient(90deg,var(--accent) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:1;max-width:650px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,200,255,.1);border:1px solid rgba(0,200,255,.3);padding:.35rem 1rem;border-radius:50px;font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:1.5rem}
+.hero-badge::before{content:'●';font-size:.5rem;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,8vw,6rem);line-height:.95;letter-spacing:2px;margin-bottom:1.5rem}
+h1 .highlight{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:2rem;max-width:500px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent2),var(--accent));border:none;color:#fff;padding:.8rem 2rem;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:.25s;text-decoration:none;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,102,255,.4)}
+.btn-wa{background:var(--whatsapp);border:none;color:#fff;padding:.8rem 2rem;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:.25s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.35)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--accent);line-height:1}
+.stat-label{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);z-index:1}
+.speed-ring{width:320px;height:320px;position:relative}
+.ring{position:absolute;border-radius:50%;border:2px solid;animation:rotate linear infinite}
+.ring1{inset:0;border-color:rgba(0,200,255,.4);animation-duration:8s}
+.ring2{inset:20px;border-color:rgba(0,102,255,.3);animation-duration:12s;animation-direction:reverse}
+.ring3{inset:50px;border-color:rgba(0,255,136,.2);animation-duration:6s}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.ring-dot{position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent)}
+.ring-center{position:absolute;inset:80px;background:var(--surface);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border)}
+.ring-center .big{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--accent);line-height:1}
+.ring-center .small{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px}
+section{padding:80px 5%}
+.section-label{color:var(--accent);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:.75rem}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.5rem);letter-spacing:1px;line-height:1.1;margin-bottom:1rem}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7}
+.section-header{margin-bottom:3.5rem}
+#plans{background:var(--surface)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.plan-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;position:relative;transition:.3s;cursor:pointer}
+.plan-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,200,255,.12)}
+.plan-card.popular{border-color:var(--accent2);background:linear-gradient(135deg,rgba(0,102,255,.08),rgba(0,200,255,.05))}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;font-size:.75rem;font-weight:700;padding:.3rem 1rem;border-radius:50px;white-space:nowrap}
+.plan-validity{background:rgba(0,200,255,.1);color:var(--accent);font-size:.7rem;font-weight:700;padding:.25rem .75rem;border-radius:50px;display:inline-block;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}
+.plan-speed{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--text);line-height:1}
+.plan-speed span{font-size:1.2rem;color:var(--muted);font-family:'Outfit',sans-serif;font-weight:400}
+.plan-price{font-size:1.8rem;font-weight:800;color:var(--accent3);margin:.5rem 0}
+.plan-price small{font-size:.9rem;color:var(--muted);font-weight:400}
+.plan-features{list-style:none;margin:1.2rem 0}
+.plan-features li{color:var(--muted);font-size:.88rem;padding:.3rem 0;display:flex;align-items:center;gap:.5rem}
+.plan-features li::before{content:'✓';color:var(--accent3);font-weight:700}
+.plan-btn{width:100%;padding:.7rem;border-radius:8px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;transition:.2s;background:var(--surface2);color:var(--text)}
+.plan-card.popular .plan-btn{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff}
+.plan-btn:hover{opacity:.85}
+.plans-tabs{display:flex;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.tab-btn{padding:.5rem 1.2rem;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;font-size:.85rem;transition:.2s}
+.tab-btn.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.coverage-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.coverage-form{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.4rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-family:'Outfit',sans-serif;font-size:.95rem;outline:none;transition:.2s}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,200,255,.1)}
+.form-group select option{background:var(--bg)}
+.form-submit{width:100%;padding:.85rem;border:none;border-radius:8px;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:.2s;margin-top:.5rem}
+.form-submit:hover{opacity:.85;transform:translateY(-1px)}
+.coverage-map{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:420px}
+.coverage-map iframe{width:100%;height:100%;border:none}
+#features{background:var(--surface)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.feature-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:.3s}
+.feature-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.feature-icon{font-size:2rem;margin-bottom:1rem}
+.feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.feature-card p{color:var(--muted);font-size:.88rem;line-height:1.6}
+.portal-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.portal-features{display:flex;flex-direction:column;gap:1rem}
+.portal-item{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;transition:.2s}
+.portal-item:hover{border-color:var(--accent)}
+.portal-item-icon{font-size:1.5rem;flex-shrink:0}
+.portal-item-text h4{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.portal-item-text p{color:var(--muted);font-size:.82rem}
+.portal-login{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;position:sticky;top:90px}
+.portal-login h3{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}
+.login-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.ltab{flex:1;padding:.5rem;text-align:center;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:600;font-size:.85rem;transition:.2s}
+.ltab.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+#support{background:var(--surface)}
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem}
+.support-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:.3s;text-decoration:none;color:var(--text);display:block}
+.support-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.support-card .icon{font-size:2.2rem;margin-bottom:.8rem}
+.support-card h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.support-card p{color:var(--muted);font-size:.82rem}
+.faq-list{max-width:750px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;padding:1.2rem 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q span.arrow{color:var(--accent);font-size:1.2rem;transition:.3s;flex-shrink:0}
+.faq-q.open span.arrow{transform:rotate(45deg)}
+.faq-a{color:var(--muted);font-size:.9rem;line-height:1.7;max-height:0;overflow:hidden;transition:.3s;padding:0}
+.faq-a.open{max-height:200px;padding:0 0 1.2rem}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img-placeholder{background:var(--surface);border:1px solid var(--border);border-radius:16px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
+.about-img-placeholder::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,102,255,.15) 0%,transparent 70%)}
+.about-icon{font-size:5rem;position:relative;z-index:1}
+.about-img-placeholder p{color:var(--muted);font-size:.9rem;position:relative;z-index:1;text-align:center;padding:0 2rem}
+.about-items{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.about-item{display:flex;align-items:flex-start;gap:1rem}
+.about-item-icon{font-size:1.5rem;flex-shrink:0;margin-top:.1rem}
+.about-item h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem}
+.about-item p{color:var(--muted);font-size:.85rem;line-height:1.6}
+#contact{background:var(--surface)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-card{display:flex;align-items:center;gap:1rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1rem}
+.contact-card .cicon{font-size:1.5rem;flex-shrink:0}
+.contact-card h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.contact-card a,.contact-card p{color:var(--muted);font-size:.85rem;text-decoration:none}
+.contact-card a:hover{color:var(--accent)}
+.contact-map{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:350px}
+.contact-map iframe{width:100%;height:100%;border:none}
+.status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-bottom:2rem}
+.status-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;align-items:center;gap:1rem}
+.status-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.status-dot.green{background:var(--accent3);box-shadow:0 0 10px var(--accent3)}
+.status-card h4{font-size:.95rem;font-weight:700}
+.status-card p{color:var(--muted);font-size:.8rem}
+.uptime-bar{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+.uptime-label{display:flex;justify-content:space-between;margin-bottom:.6rem;font-size:.85rem}
+.uptime-label span:last-child{color:var(--accent3);font-weight:700}
+.bar-track{background:var(--border);border-radius:50px;height:8px}
+.bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--accent2),var(--accent3))}
+.floating-wa{position:fixed;bottom:2rem;right:2rem;z-index:9999;background:var(--whatsapp);color:#fff;border-radius:50px;padding:.8rem 1.4rem;display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:.25s;animation:wabounce 3s ease-in-out infinite}
+.floating-wa:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 40px rgba(37,211,102,.55)}
+@keyframes wabounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.footer-brand .logo{font-size:1.6rem;display:block;margin-bottom:.75rem}
+.footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.7}
+.footer-col h4{font-size:.9rem;font-weight:700;margin-bottom:1rem;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col ul li a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:.2s}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{color:var(--muted);font-size:.82rem}
+.toast{position:fixed;bottom:6rem;right:2rem;z-index:9999;background:var(--accent3);color:#000;padding:1rem 1.5rem;border-radius:10px;font-weight:700;font-size:.9rem;transform:translateY(100px);opacity:0;transition:.4s}
+.toast.show{transform:translateY(0);opacity:1}
+.modal-overlay{position:fixed;inset:0;background:rgba(4,8,15,.92);z-index:9998;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;max-width:500px;width:100%;position:relative;animation:modalIn .3s ease}
+@keyframes modalIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer}
+.modal h3{font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.modal p{color:var(--muted);font-size:.88rem;margin-bottom:1.5rem}
+@media(max-width:900px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.hero-visual{display:none}.coverage-inner,.portal-inner,.about-inner,.contact-grid{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){nav{padding:0 4%}section{padding:60px 4%}.footer-grid{grid-template-columns:1fr}h1{font-size:3rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SONU <span>NET</span></div>
+  <ul class="nav-links">
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#coverage">Get Connected</a></li>
+    <li><a href="#portal">My Account</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('coverage').scrollIntoView({behavior:'smooth'})">Get Connection</button>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#plans" onclick="toggleMenu()">Plans & Pricing</a>
+  <a href="#coverage" onclick="toggleMenu()">Get Connected</a>
+  <a href="#portal" onclick="toggleMenu()">My Account</a>
+  <a href="#support" onclick="toggleMenu()">Support</a>
+  <a href="#network" onclick="toggleMenu()">Network Status</a>
+  <a href="#about" onclick="toggleMenu()">About Us</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🟢 Live in Govandi, Mumbai</div>
+    <h1>LIGHTNING FAST <span class="highlight">FIBER</span> INTERNET</h1>
+    <p class="hero-sub">Mumbai's most reliable high-speed fiber internet. Starting at just ₹400/month with zero installation hassle in Govandi & surrounding areas.</p>
+    <div class="hero-btns">
+      <a href="#coverage" class="btn-primary">🚀 Get Connection</a>
+      <a href="https://wa.me/919321792159?text=Hello%2C%20I%20want%20a%20new%20internet%20connection%20from%20Sonu%20Network." class="btn-wa" target="_blank"><span>💬</span> WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="ctr">500+</div><div class="stat-label">Happy Customers</div></div>
+      <div class="stat"><div class="stat-num" id="upt">99.7%</div><div class="stat-label">Network Uptime</div></div>
+      <div class="stat"><div class="stat-num" id="spd">150 Mbps</div><div class="stat-label">Max Speed</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="speed-ring">
+      <div class="ring ring1"><div class="ring-dot"></div></div>
+      <div class="ring ring2"><div class="ring-dot"></div></div>
+      <div class="ring ring3"><div class="ring-dot"></div></div>
+      <div class="ring-center"><div class="big">150</div><div class="small">Mbps</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section id="plans">
+  <div class="section-header">
+    <div class="section-label">Pricing</div>
+    <div class="section-title">CHOOSE YOUR PLAN</div>
+    <p class="section-sub">All plans include unlimited data, 24/7 support, and free fiber setup. Pick a validity that works for you.</p>
+  </div>
+  <div class="plans-tabs">
+    <button class="tab-btn active" onclick="showPlans('30',this)">30 Days</button>
+    <button class="tab-btn" onclick="showPlans('90',this)">90 Days</button>
+    <button class="tab-btn" onclick="showPlans('180',this)">180 Days</button>
+    <button class="tab-btn" onclick="showPlans('360',this)">360 Days</button>
+  </div>
+  <div class="plans-grid" id="plansGrid"></div>
+</section>
+
+<!-- COVERAGE -->
+<section id="coverage">
+  <div class="coverage-inner">
+    <div>
+      <div class="section-label">Get Connected</div>
+      <div class="section-title">CHECK AVAILABILITY</div>
+      <p class="section-sub" style="margin-bottom:2rem">Fill in your details and we'll send a connection request directly to our team via WhatsApp.</p>
+      <div class="coverage-form">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="leadName" placeholder="Enter your full name"></div>
+        <div class="form-group"><label>Mobile Number *</label><input type="tel" id="leadPhone" placeholder="Enter 10-digit mobile number"></div>
+        <div class="form-group"><label>Address / Area *</label><input type="text" id="leadAddress" placeholder="e.g. Govandi East, Mumbai"></div>
+        <div class="form-group"><label>Pincode</label><input type="text" id="leadPin" placeholder="e.g. 400043"></div>
+        <div class="form-group"><label>Preferred Plan</label>
+          <select id="leadPlan">
+            <option value="">-- Select Plan --</option>
+            <option>40 Mbps – ₹400/month</option>
+            <option>75 Mbps – ₹500/month</option>
+            <option>100 Mbps – ₹700/month</option>
+            <option>150 Mbps – ₹900/month</option>
+            <option>Fiber to Home + 5G Router – ₹3000 setup</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="sendLead()">📲 Send Request via WhatsApp</button>
+      </div>
+    </div>
+    <div>
+      <div class="coverage-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.108!2d72.9135!3d19.0550!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7b8b2a2a2a1%3A0x1234567890abcdef!2sZakir%20Hussain%20Nagar%2C%20Govandi%20East%2C%20Mumbai%2C%20Maharashtra%20400043%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div style="margin-top:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem">
+        <span>📍</span>
+        <div><div style="font-weight:700;font-size:.9rem">Sonu Network Office</div><div style="color:var(--muted);font-size:.82rem">Zakir Hussain Nagar, Govandi East, Mumbai – 400043</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-header">
+    <div class="section-label">Why Sonu Network</div>
+    <div class="section-title">EVERYTHING YOU NEED</div>
+    <p class="section-sub">Built for Mumbai's fast-paced lifestyle. Reliable, fast, and affordable internet.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">⚡</div><h3>Blazing Fast Speeds</h3><p>Up to 150 Mbps fiber-optic internet for seamless streaming, gaming, and remote work.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔒</div><h3>Secure & Stable</h3><p>Dedicated fiber line to your home. No shared bandwidth, no slowdowns during peak hours.</p></div>
+    <div class="feature-card"><div class="feature-icon">📞</div><h3>24/7 Support</h3><p>Reach us anytime via WhatsApp, call, or raise a ticket. We respond within minutes.</p></div>
+    <div class="feature-card"><div class="feature-icon">📱</div><h3>5G Router Available</h3><p>Get fiber to home with a 5G router for just ₹3,000 one-time installation fee.</p></div>
+    <div class="feature-card"><div class="feature-icon">💳</div><h3>Easy Recharge</h3><p>Pay via UPI, PhonePe, Paytm, Google Pay, or Razorpay. Instant activation.</p></div>
+    <div class="feature-card"><div class="feature-icon">🗺️</div><h3>Local Coverage</h3><p>Deep coverage across Govandi East, Cheetah Camp, Bainganwadi, and surrounding areas.</p></div>
+  </div>
+</section>
+
+<!-- PORTAL -->
+<section id="portal">
+  <div class="portal-inner">
+    <div>
+      <div class="section-label">Customer Portal</div>
+      <div class="section-title">MANAGE YOUR ACCOUNT</div>
+      <p class="section-sub" style="margin-bottom:2rem">View bills, recharge online, track complaints, and manage your plan — all in one place.</p>
+      <div class="portal-features">
+        <div class="portal-item"><div class="portal-item-icon">🧾</div><div class="portal-item-text"><h4>View & Download Bills</h4><p>Access all your invoices anytime</p></div></div>
+        <div class="portal-item"><div class="portal-item-icon">💰</div><div class="portal-item-text"><h4>Online Recharge</h4><p>UPI, PhonePe, Paytm, Google Pay</p></div></div>
+        <div class="portal-item"><div class="portal-item-icon">📊</div><div class="portal-item-text"><h4>Usage Statistics</h4><p>Monitor your data consumption</p></div></div>
+        <div class="portal-item"><div class="portal-item-icon">🔄</div><div class="portal-item-text"><h4>Plan Upgrade / Downgrade</h4><p>Switch plans instantly</p></div></div>
+        <div class="portal-item"><div class="portal-item-icon">🎫</div><div class="portal-item-text"><h4>Ticket Management</h4><p>Raise and track complaints</p></div></div>
+      </div>
+    </div>
+    <div class="portal-login">
+      <h3>Customer Login</h3>
+      <div class="login-tabs">
+        <button class="ltab active" id="loginTab" onclick="switchAuth('login')">Login</button>
+        <button class="ltab" id="regTab" onclick="switchAuth('register')">Register</button>
+      </div>
+      <div id="loginForm">
+        <div class="form-group"><label>Mobile Number</label><input type="tel" placeholder="Enter registered mobile"></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Enter password"></div>
+        <button class="form-submit" onclick="showToast('OTP sent to your mobile!')">Login with OTP</button>
+        <p style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--muted)">Forgot password? <a href="https://wa.me/919321792159" target="_blank" style="color:var(--accent)">Contact support</a></p>
+      </div>
+      <div id="regForm" style="display:none">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+        <div class="form-group"><label>Mobile Number</label><input type="tel" placeholder="10-digit number"></div>
+        <div class="form-group"><label>Address</label><input type="text" placeholder="Your area in Mumbai"></div>
+        <button class="form-submit" onclick="showToast('Registration request sent!')">Register Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section id="support">
+  <div class="section-header">
+    <div class="section-label">Help Center</div>
+    <div class="section-title">SUPPORT & HELP</div>
+    <p class="section-sub">We're here whenever you need us. Choose the fastest way to reach us.</p>
+  </div>
+  <div class="support-grid" style="margin-bottom:3.5rem">
+    <a href="https://wa.me/919321792159?text=Hi%2C%20I%20need%20support" target="_blank" class="support-card"><div class="icon">💬</div><h3>WhatsApp Support</h3><p>Fastest response. Chat now on +91 93217 92159</p></a>
+    <a href="tel:+919321792159" class="support-card"><div class="icon">📞</div><h3>Call Us</h3><p>Speak directly to our support team</p></a>
+    <div class="support-card" onclick="openTicket()" style="cursor:pointer"><div class="icon">🎫</div><h3>Raise Ticket</h3><p>Log a complaint and track its status</p></div>
+    <div class="support-card" style="cursor:pointer"><div class="icon">❓</div><h3>FAQ</h3><p>Quick answers to common questions below</p></div>
+  </div>
+  <div class="section-label" style="margin-bottom:1.5rem">FAQ</div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What areas do you cover? <span class="arrow">+</span></button><div class="faq-a">We primarily serve Govandi East, Zakir Hussain Nagar, Cheetah Camp, Bainganwadi, and nearby areas in Mumbai. Fill our coverage form and we'll confirm availability.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does installation take? <span class="arrow">+</span></button><div class="faq-a">We typically complete fiber installation within 24-48 hours after confirmation. Our technician will contact you before the visit.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment methods are accepted? <span class="arrow">+</span></button><div class="faq-a">We accept UPI, Google Pay, PhonePe, Paytm, and Razorpay. Cash payments can also be made at our office.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a data limit? <span class="arrow">+</span></button><div class="faq-a">All our plans include unlimited data. Stream, game, and browse without any data caps or throttling.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is the fiber to home setup cost? <span class="arrow">+</span></button><div class="faq-a">We offer fiber to home with a 5G router for a one-time fee of ₹3,000. This includes full hardware and setup at your premises.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I renew my plan? <span class="arrow">+</span></button><div class="faq-a">You can renew via WhatsApp, UPI transfer, at our office, or via the Customer Portal. We send reminders before expiry.</div></div>
+  </div>
+</section>
+
+<!-- NETWORK STATUS -->
+<section id="network">
+  <div class="section-header">
+    <div class="section-label">Live Status</div>
+    <div class="section-title">NETWORK STATUS</div>
+    <p class="section-sub">Real-time status of all our network services.</p>
+  </div>
+  <div class="status-grid">
+    <div class="status-card"><div class="status-dot green"></div><div><h4>Fiber Network</h4><p>All systems operational</p></div></div>
+    <div class="status-card"><div class="status-dot green"></div><div><h4>DNS Services</h4><p>All systems operational</p></div></div>
+    <div class="status-card"><div class="status-dot green"></div><div><h4>CGNAT Gateway</h4><p>All systems operational</p></div></div>
+    <div class="status-card"><div class="status-dot green"></div><div><h4>Support Systems</h4><p>All systems operational</p></div></div>
+  </div>
+  <div class="uptime-bar" style="margin-top:1.5rem">
+    <div class="uptime-label"><span>90-Day Uptime</span><span>99.7%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:99.7%"></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-img-placeholder">
+      <div class="about-icon">🌐</div>
+      <p>Serving Govandi, Mumbai with fast, reliable fiber internet</p>
+    </div>
+    <div class="about-info">
+      <div class="section-label">About Us</div>
+      <div class="section-title">SONU NETWORK</div>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem">Sonu Network is a local Internet Service Provider based in Govandi East, Mumbai. We are committed to bridging the digital divide by providing high-speed, affordable fiber internet to every home and business in our community.</p>
+      <div class="about-items">
+        <div class="about-item"><div class="about-item-icon">🎯</div><div><h4>Our Mission</h4><p>Make high-speed internet accessible to every household in Govandi and surrounding areas at affordable prices.</p></div></div>
+        <div class="about-item"><div class="about-item-icon">👁️</div><div><h4>Our Vision</h4><p>To become Mumbai's most trusted local ISP with 100% fiber coverage across the eastern suburbs.</p></div></div>
+        <div class="about-item"><div class="about-item-icon">🤝</div><div><h4>Community First</h4><p>Local team, local knowledge. We live where you live and care about our neighborhood's connectivity.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-label">Contact Us</div>
+    <div class="section-title">GET IN TOUCH</div>
+    <p class="section-sub">We're open 10 AM – 10 PM, 7 days a week. Come visit or reach us online.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-card"><div class="cicon">📍</div><div><h4>Address</h4><p>Zakir Hussain Nagar, Govandi East, Mumbai – 400043</p></div></div>
+      <div class="contact-card"><div class="cicon">📞</div><div><h4>Phone / WhatsApp</h4><a href="tel:+919321792159">+91 93217 92159</a></div></div>
+      <div class="contact-card"><div class="cicon">🕐</div><div><h4>Working Hours</h4><p>Mon–Sun: 10:00 AM – 10:00 PM</p></div></div>
+      <div class="contact-card"><div class="cicon">💬</div><div><h4>WhatsApp</h4><a href="https://wa.me/919321792159" target="_blank">Chat with us now</a></div></div>
+      <a href="https://wa.me/919321792159?text=Hello%20Sonu%20Network%2C%20I%20need%20help" target="_blank" class="btn-wa" style="display:inline-flex;margin-top:.5rem"><span>💬</span> Chat on WhatsApp Now</a>
+    </div>
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.108!2d72.9135!3d19.0550!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7b8b2a2a2a1%3A0x1234567890abcdef!2sZakir%20Hussain%20Nagar%2C%20Govandi%20East%2C%20Mumbai%2C%20Maharashtra%20400043%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">SONU <span>NET</span></span>
+      <p>High-speed fiber internet for Govandi East and surrounding Mumbai neighborhoods. Fast, reliable, affordable.</p>
+      <div style="margin-top:1rem;display:flex;gap:.75rem">
+        <a href="https://wa.me/919321792159" target="_blank" style="background:var(--whatsapp);color:#fff;padding:.4rem .9rem;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:700">WhatsApp</a>
+        <a href="tel:+919321792159" style="background:var(--surface2);color:var(--text);padding:.4rem .9rem;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:700;border:1px solid var(--border)">Call Now</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Plans</h4><ul><li><a href="#plans">30-Day Plans</a></li><li><a href="#plans">90-Day Plans</a></li><li><a href="#plans">180-Day Plans</a></li><li><a href="#plans">360-Day Plans</a></li><li><a href="#plans">Fiber Setup ₹3000</a></li></ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#coverage">Check Coverage</a></li><li><a href="#portal">Customer Portal</a></li><li><a href="#support">Support Center</a></li><li><a href="#network">Network Status</a></li><li><a href="#about">About Us</a></li></ul></div>
+    <div class="footer-col"><h4>Support</h4><ul><li><a href="https://wa.me/919321792159" target="_blank">WhatsApp Support</a></li><li><a href="tel:+919321792159">Call: 93217 92159</a></li><li><a href="#support">Raise Ticket</a></li><li><a href="#support">FAQ</a></li><li><a href="#contact">Visit Office</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Sonu Network. All rights reserved. | Zakir Hussain Nagar, Govandi East, Mumbai – 400043</p>
+    <p style="color:var(--muted);font-size:.8rem">Professional ISP Website</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/919321792159?text=Hello%20Sonu%20Network%2C%20I%20need%20internet%20connection." target="_blank" class="floating-wa"><span>💬</span> WhatsApp Us</a>
+<div class="toast" id="toast"></div>
+
+<!-- TICKET MODAL -->
+<div class="modal-overlay" id="ticketModal">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('ticketModal').classList.remove('open')">✕</button>
+    <h3>🎫 Raise Support Ticket</h3>
+    <p>Describe your issue and we'll get back to you ASAP via WhatsApp.</p>
+    <div class="form-group"><label>Mobile Number</label><input type="tel" id="tkPhone" placeholder="Registered mobile number"></div>
+    <div class="form-group"><label>Issue Type</label>
+      <select id="tkType"><option>No Internet / Disconnection</option><option>Slow Speed</option><option>Billing Issue</option><option>Plan Change Request</option><option>New Connection</option><option>Router Problem</option><option>Other</option></select>
+    </div>
+    <div class="form-group"><label>Description</label><textarea id="tkDesc" rows="3" placeholder="Describe your problem..." style="resize:none"></textarea></div>
+    <button class="form-submit" onclick="submitTicket()">📲 Submit via WhatsApp</button>
+  </div>
+</div>
+
+<script>
+const plansData={
+  '30':[{speed:'40',price:'₹400',period:'/month',popular:false},{speed:'75',price:'₹500',period:'/month',popular:false},{speed:'100',price:'₹700',period:'/month',popular:true},{speed:'150',price:'₹900',period:'/month',popular:false}],
+  '90':[{speed:'40',price:'₹1,200',period:'/3 months',popular:false},{speed:'75',price:'₹1,500',period:'/3 months',popular:false},{speed:'100',price:'₹2,100',period:'/3 months',popular:true},{speed:'150',price:'₹2,700',period:'/3 months',popular:false}],
+  '180':[{speed:'40',price:'₹2,250',period:'/6 months',popular:false},{speed:'75',price:'₹2,850',period:'/6 months',popular:false},{speed:'100',price:'₹4,050',period:'/6 months',popular:true},{speed:'150',price:'₹5,250',period:'/6 months',popular:false}],
+  '360':[{speed:'40',price:'₹4,200',period:'/year',popular:false},{speed:'75',price:'₹5,400',period:'/year',popular:false},{speed:'100',price:'₹7,800',period:'/year',popular:true},{speed:'150',price:'₹10,200',period:'/year',popular:false}]
+};
+const savings={'30':'','90':'Save ~8%','180':'Save ~12%','360':'Save 15%+'};
+
+function showPlans(v,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const g=document.getElementById('plansGrid');
+  g.innerHTML=plansData[v].map(p=>`
+    <div class="plan-card ${p.popular?'popular':''}">
+      ${p.popular?'<div class="popular-badge">⭐ Most Popular</div>':''}
+      <div class="plan-validity">${v} Days${savings[v]?' · '+savings[v]:''}</div>
+      <div class="plan-speed">${p.speed}<span> Mbps</span></div>
+      <div class="plan-price">${p.price} <small>${p.period}</small></div>
+      <ul class="plan-features"><li>Unlimited Data</li><li>Fiber Connection</li><li>24/7 Support</li><li>Static IP Optional</li></ul>
+      <button class="plan-btn" onclick="orderPlan('${p.speed} Mbps','${p.price}','${v} days')">Get This Plan</button>
+    </div>`).join('');
+}
+showPlans('30');
+
+function orderPlan(s,p,v){
+  const m=encodeURIComponent('Hello Sonu Network! 🙏\n\nI want to subscribe to:\n📶 Speed: '+s+'\n💰 Price: '+p+'\n📅 Validity: '+v+'\n\nPlease guide me. Thank you!');
+  window.open('https://wa.me/919321792159?text='+m,'_blank');
+}
+
+function sendLead(){
+  const name=document.getElementById('leadName').value.trim();
+  const phone=document.getElementById('leadPhone').value.trim();
+  const addr=document.getElementById('leadAddress').value.trim();
+  const pin=document.getElementById('leadPin').value.trim();
+  const plan=document.getElementById('leadPlan').value;
+  if(!name||!phone||!addr){showToast('Please fill all required fields!');return;}
+  const m=encodeURIComponent('Hello Sonu Network! 🙏\n\n*New Connection Request*\n\n👤 Name: '+name+'\n📱 Mobile: '+phone+'\n📍 Address: '+addr+(pin?'\n📮 Pincode: '+pin:'')+(plan?'\n📶 Plan: '+plan:'')+'\n\nPlease contact me. Thank you!');
+  window.open('https://wa.me/919321792159?text='+m,'_blank');
+  showToast('✅ Request sent via WhatsApp!');
+}
+
+function openTicket(){document.getElementById('ticketModal').classList.add('open')}
+function submitTicket(){
+  const phone=document.getElementById('tkPhone').value.trim();
+  const type=document.getElementById('tkType').value;
+  const desc=document.getElementById('tkDesc').value.trim();
+  if(!phone){showToast('Please enter your mobile number!');return;}
+  const m=encodeURIComponent('Hello Sonu Network Support! 🙏\n\n*Support Ticket*\n\n📱 Mobile: '+phone+'\n🔧 Issue: '+type+(desc?'\n📝 Details: '+desc:'')+'\n\nPlease help me resolve this. Thank you!');
+  window.open('https://wa.me/919321792159?text='+m,'_blank');
+  document.getElementById('ticketModal').classList.remove('open');
+  showToast('🎫 Ticket submitted via WhatsApp!');
+}
+
+function switchAuth(m){
+  document.getElementById('loginForm').style.display=m==='login'?'block':'none';
+  document.getElementById('regForm').style.display=m==='register'?'block':'none';
+  document.getElementById('loginTab').classList.toggle('active',m==='login');
+  document.getElementById('regTab').classList.toggle('active',m==='register');
+}
+
+function toggleFaq(btn){
+  const a=btn.nextElementSibling;
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
+  if(!isOpen){a.classList.add('open');btn.classList.add('open');}
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.style.display=m.style.display==='flex'?'none':'flex';
+}
+
+document.getElementById('ticketModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+</script>
+</body>
+</html>
